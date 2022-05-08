@@ -338,7 +338,7 @@ const KEYBOARD = {
                             if(key.classList.value.includes('key-active')) {
                                 item.innerHTML = item.innerHTML.toUpperCase();
                             } else {
-                                if(!event.shiftKey) {
+                                if(!event.shiftKey && !this.properties.caps) {
                                 key.classList.remove('key-active');
                                 this.properties.shift = false;
                                 item.innerHTML = item.innerHTML.toLowerCase();
