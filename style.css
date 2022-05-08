@@ -51,8 +51,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* height: 40px;
-    width: 6%; */
     height: 50px;
     width: 50px;
     padding: 5px;
@@ -92,12 +90,11 @@
 }
 
 .key-wide {
-    /* width: 10%; */
     width: 100px;
 }
 
 .key-space-bar {
-    width: 30%;
+    width: 250px;
     background: #ffffff url('./assets/icons/space-bar.svg') no-repeat center;
 }
 
