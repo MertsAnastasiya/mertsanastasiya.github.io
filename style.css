@@ -71,6 +71,21 @@
     position: relative;
 }
 
+.key-active {
+    background-color: rgba(7, 18, 53, 0.212);
+}
+
+.key-active:after { /*SHIFT, CAPS, ALT*/
+    content: '';
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(61, 255, 61);
+}
+
 .key:hover {
     background-color: rgba(236, 238, 244, 0.475);
 }
@@ -120,4 +135,9 @@
 
 .key-enter {
     background: #ffffff url('./assets/icons/arrow-return-left.svg') no-repeat center;
+}
+
+.push {
+    border-radius: 50%;
+    background-color: rgba(236, 238, 244, 0.475);
 }

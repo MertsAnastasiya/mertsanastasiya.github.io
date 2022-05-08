@@ -126,4 +126,163 @@ const KEYBOARD = {
             this.elements.keyboardWrapper.appendChild(keyboardLine);
         }
    },
+
+   addListeners() {
+    for(let key of this.elements.keys) {
+        key.addEventListener('click', (event) => {
+            switch(key.id) {
+             case 'Space': 
+                 this.properties.value += ' ';
+                 this.elements.textResult.value = this.properties.value;
+                 break;
+
+             case 'Backspace':
+                 this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
+                 this.elements.textResult.value = this.properties.value;
+                 break;
+
+             case 'Tab': 
+                 this.properties.value += '  ';
+                 this.elements.textResult.value = this.properties.value;
+                 break;
+                 
+             case 'ShiftLeft': 
+                 this.properties.shift = !this.properties.shift;
+                 key.classList.toggle('key-active');
+                 for(let item of this.elements.keys) {
+                     if(key.classList.value.includes('key-active')) {
+                         item.innerHTML = item.innerHTML.toUpperCase();
+                     } else {
+                         item.innerHTML = item.innerHTML.toLowerCase();
+                     }
+                 }
+                 break;
+             case 'ShiftRight': 
+                 this.properties.shift = !this.properties.shift;
+                 key.classList.toggle('key-active');
+                 for(let item of this.elements.keys) {
+                     if(key.classList.value.includes('key-active')) {
+                         item.innerHTML = item.innerHTML.toUpperCase();
+                     } else {
+                         item.innerHTML = item.innerHTML.toLowerCase();
+                     }
+                 }
+                 break;
+
+             case 'CapsLock': 
+                 key.classList.toggle('key-active');   
+                 this.properties.caps = !this.properties.caps;
+                 for(let item of this.elements.keys) {
+                     if( item.innerHTML !== 'ctrl' || item.innerHTML !== 'alt' || item.innerHTML != 'delete') {
+                         item.innerHTML = this.properties.caps ? item.innerHTML.toUpperCase() : item.innerHTML.toLowerCase();
+                     }
+                 }
+                 break;
+
+             case 'Enter': 
+                 this.properties.value += '\n';
+                 this.elements.textResult.value = this.properties.value;
+                 break;
+
+             case 'ArrowLeft':
+                 this.properties.value += '←';
+                 this.elements.textResult.value = this.properties.value;
+                  break;
+
+             case 'ArrowRight':
+                 this.properties.value += '→';
+                 this.elements.textResult.value = this.properties.value;
+                 break;
+             case 'ArrowUp':
+                 this.properties.value += '↑';
+                 this.elements.textResult.value = this.properties.value;
+                 break;
+             case 'ArrowDown': 
+                 this.properties.value += '↓';
+                 this.elements.textResult.value = this.properties.value;
+                 break;
+             default: {
+                 this.properties.value += (this.properties.caps || this.properties.shift) ? key.innerHTML.toUpperCase() : key.innerHTML.toLowerCase();
+                 if(!event.shiftKey && this.properties.shift) {
+                     this.properties.shift = false;
+                     for(let item of this.elements.keys) {
+                         item.innerHTML = this.properties.caps ? item.innerHTML.toUpperCase() : item.innerHTML.toLowerCase();
+                     }
+                 }
+
+                 const shift = document.getElementsByClassName('key-shift');
+
+                 if(String(shift[0].classList).includes('key-active')) {
+                     shift[0].classList.remove('key-active');
+                 }
+                 if(String(shift[1].classList).includes('key-active')) {
+                     shift[1].classList.remove('key-active');
+                 }
+                 
+                 this.elements.textResult.value = this.properties.value; 
+             }
+             }
+         });
+
+         key.addEventListener('focus', (event) => {
+             event.preventDefault();
+             if(event.relatedTarget) {
+                 event.relatedTarget.focus();
+             }
+             else {
+                 event.currentTarget.blur();
+             }
+     });
+    }
+    
+    document.addEventListener('keydown', (event) => {
+        this.properties.pressedButton.add(event.code);
+        for(let key of this.elements.keys) { 
+             if(key.id == event.code) {
+                 if(key.id == 'CapsLock') {
+                     this.properties.caps = !this.properties.caps;
+                     key.classList.toggle('key-active');
+                     for(let item of this.elements.keys) {
+                         item.innerHTML = this.properties.caps ? item.innerHTML.toUpperCase() : item.innerHTML.toLowerCase();
+                     }
+                     return;
+                 }
+                 if(event.shiftKey){
+                     key.classList.add('key-active');
+                     this.properties.shift = true;
+                     for(let item of this.elements.keys) {
+                         item.innerHTML = item.innerHTML.toUpperCase();
+                     }
+                     key.classList.add('push');
+                     return;
+                 }
+                 key.classList.add('push');
+             }
+         }
+         if( this.elements.emptyElements.includes(event.key)) {
+             this.properties.value += ''; 
+         } else {
+             this.properties.value += event.key; 
+         }
+        
+     });
+ 
+     document.addEventListener('keyup', (event) => {
+     this.properties.pressedButton.delete(event.code);
+     for(let key of this.elements.keys) {
+         if(key.id == event.code) { 
+             if(key.id === 'ShiftLeft' || key.id === 'ShiftRight') {
+                 key.classList.remove('key-active');
+                 this.properties.shift = false;
+                 for(let item of this.elements.keys) {
+                     item.innerHTML = item.innerHTML.toLowerCase();
+                 }
+                 key.classList.remove('push');
+                 return;
+             }
+             key.classList.remove('push');
+         }
+     }
+ });
+},
 }
