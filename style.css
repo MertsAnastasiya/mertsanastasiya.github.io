@@ -41,3 +41,83 @@
     border-radius: 5px;
     user-select: none;
 }
+
+.keyboard-line {
+    display: flex;
+    flex-direction: row;
+}
+
+.key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 40px;
+    width: 6%; */
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+    color: rgb(7, 18, 53);
+    cursor: pointer;
+
+    font-family:'Times New Roman', Times, serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(7, 18, 53);
+
+    position: relative;
+}
+
+.key:hover {
+    background-color: rgba(236, 238, 244, 0.475);
+}
+
+.key-wide {
+    /* width: 10%; */
+    width: 80px;
+}
+
+.key-space-bar {
+    width: 30%;
+    background: #ffffff url('./assets/icons/space-bar.svg') no-repeat center;
+}
+
+.key-shift {
+    background: #ffffff url('./assets/icons/shift.svg') no-repeat center;
+    background-size: 20px 20px;
+}
+
+.key-caps {
+    background: #ffffff url('./assets/icons/capslock.svg') no-repeat center;
+}
+
+.key-backspace {
+    background: #ffffff url('./assets/icons/backspace.svg') no-repeat center;
+}
+
+.key-tab {
+    background: #ffffff url('./assets/icons/keyboard-tab.svg') no-repeat center;
+}
+
+.key-up {
+    background: #ffffff url('./assets/icons/caret-up.svg') no-repeat center;
+}
+
+.key-down {
+    background: #ffffff url('./assets/icons/caret-down.svg') no-repeat center;
+}
+
+.key-right {
+    background: #ffffff url('./assets/icons/caret-right.svg') no-repeat center;
+}
+
+.key-left {
+    background: #ffffff url('./assets/icons/caret-left.svg') no-repeat center;
+}
+
+.key-enter {
+    background: #ffffff url('./assets/icons/arrow-return-left.svg') no-repeat center;
+}
