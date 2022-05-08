@@ -71,7 +71,7 @@ const KEYBOARD = {
                         break;
 
                     case 'Tab': 
-                        keyBtn.classList.add('key-tab'); 
+                        keyBtn.classList.add('key-tab', 'key-wide'); 
                         keyBtn.innerHTML = '';
                         break;
                         
@@ -114,19 +114,10 @@ const KEYBOARD = {
                         keyBtn.classList.add('key-wide');       
                         keyBtn.innerHTML = key.name.general;
                         break;
-                        case 'ControlRight':
+                    case 'ControlRight':
                             keyBtn.classList.add('key-wide');     
                             keyBtn.innerHTML = key.name.general;
                             break;
-                        case 'AltLeft':
-                            keyBtn.classList.add('key-wide');   
-                            keyBtn.innerHTML = key.name.general;
-                            break;
-                        case 'AltRight':
-                            keyBtn.classList.add('key-wide');   
-                            keyBtn.innerHTML = key.name.general;
-                            break;
-
                     default: 
                         if(this.properties.language.includes('ru')) {
                             keyBtn.innerHTML = key.name.ru?.toLowerCase() || key.name.general?.toLowerCase();
@@ -347,9 +338,11 @@ const KEYBOARD = {
                             if(key.classList.value.includes('key-active')) {
                                 item.innerHTML = item.innerHTML.toUpperCase();
                             } else {
+                                if(!event.shiftKey) {
                                 key.classList.remove('key-active');
                                 this.properties.shift = false;
                                 item.innerHTML = item.innerHTML.toLowerCase();
+                                }
                             }
                         }
                     }
