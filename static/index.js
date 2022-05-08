@@ -350,6 +350,10 @@ const KEYBOARD = {
                             if(key.classList.value.includes('key-active')) {
                                 item.innerHTML = item.innerHTML.toUpperCase();
                             } else {
+<<<<<<< HEAD
+=======
+                                if(!event.shiftKey && !this.properties.caps) {
+>>>>>>> 09f3264... fix: fix behavior for CapsLock
                                 key.classList.remove('key-active');
                                 this.properties.shift = false;
                                 item.innerHTML = item.innerHTML.toLowerCase();
