@@ -5,7 +5,7 @@ const KEYBOARD = {
         textResult: null,
         keyboardWrapper: null,
         keys: [],
-        emptyElements: ['Control', 'Alt', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Enter', 'Backspase', 'Shift']
+        emptyElements: ['Control', 'Alt', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Enter', 'Backspase', 'Shift', 'ControlLeft', 'ControlRight', 'AltLeft', 'AltRight'],
     },
 
     properties: {
@@ -110,6 +110,22 @@ const KEYBOARD = {
                         keyBtn.classList.add('key-down');   
                         keyBtn.innerHTML = '';
                         break;
+                    case 'ControlLeft':
+                        keyBtn.classList.add('key-wide');       
+                        keyBtn.innerHTML = key.name.general;
+                        break;
+                        case 'ControlRight':
+                            keyBtn.classList.add('key-wide');     
+                            keyBtn.innerHTML = key.name.general;
+                            break;
+                        case 'AltLeft':
+                            keyBtn.classList.add('key-wide');   
+                            keyBtn.innerHTML = key.name.general;
+                            break;
+                        case 'AltRight':
+                            keyBtn.classList.add('key-wide');   
+                            keyBtn.innerHTML = key.name.general;
+                            break;
 
                     default: 
                         if(this.properties.language.includes('ru')) {
@@ -212,6 +228,22 @@ const KEYBOARD = {
                         keyBtn.classList.add('key-down');   
                         keyBtn.innerHTML = '';
                         break;
+                    case 'ControlLeft':
+                        keyBtn.classList.add('key-wide');       
+                        keyBtn.innerHTML = '';
+                        break;
+                    case 'ControlRight':
+                         keyBtn.classList.add('key-wide');     
+                        keyBtn.innerHTML = '';
+                        break;
+                    case 'AltLeft':
+                        keyBtn.classList.add('key-wide');   
+                        keyBtn.innerHTML = '';
+                        break;
+                    case 'AltRight':
+                        keyBtn.classList.add('key-wide');   
+                        keyBtn.innerHTML = '';
+                        break;
 
                     default: 
                         if(this.properties.language.includes('ru')) {
@@ -305,14 +337,32 @@ const KEYBOARD = {
                     this.properties.value += '↓';
                     this.elements.textResult.value = this.properties.value;
                     break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6c64c65... feat: change behavior for Ctrl, Alt, Shift
                 default: {
-                    this.properties.value += (this.properties.caps || this.properties.shift) ? key.innerHTML.toUpperCase() : key.innerHTML.toLowerCase();
-                    if(!event.shiftKey && this.properties.shift) {
-                        this.properties.shift = false;
+                    if( this.elements.emptyElements.includes(key.id)) {
+                        this.properties.value += ''; 
+                    } else {
+                        this.properties.value += (this.properties.caps || this.properties.shift) ? key.innerHTML.toUpperCase() : key.innerHTML.toLowerCase();
                         for(let item of this.elements.keys) {
-                            item.innerHTML = this.properties.caps ? item.innerHTML.toUpperCase() : item.innerHTML.toLowerCase();
+                            if(key.classList.value.includes('key-active')) {
+                                item.innerHTML = item.innerHTML.toUpperCase();
+                            } else {
+                                key.classList.remove('key-active');
+                                this.properties.shift = false;
+                                item.innerHTML = item.innerHTML.toLowerCase();
+                            }
                         }
                     }
+                    // 
+                    // if(!event.shiftKey && this.properties.shift) {
+                    //     this.properties.shift = false;
+                    //     for(let item of this.elements.keys) {
+                    //         item.innerHTML = this.properties.caps ? item.innerHTML.toUpperCase() : item.innerHTML.toLowerCase();
+                    //     }
+                    // }
 
                     const shift = document.getElementsByClassName('key-shift');
 
