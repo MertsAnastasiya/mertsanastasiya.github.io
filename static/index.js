@@ -305,6 +305,7 @@ const KEYBOARD = {
                     this.properties.value += '↓';
                     this.elements.textResult.value = this.properties.value;
                     break;
+                    
                 default: {
                     this.properties.value += (this.properties.caps || this.properties.shift) ? key.innerHTML.toUpperCase() : key.innerHTML.toLowerCase();
                     if(!event.shiftKey && this.properties.shift) {
