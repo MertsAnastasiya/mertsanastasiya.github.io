@@ -57,7 +57,6 @@
     padding: 5px;
     margin: 5px;
     background-color: #ffffff;
-    border: 1px solid rgb(7, 18, 53);
     border-radius: 5px;
     text-align: center;
     color: rgb(7, 18, 53);
@@ -91,7 +90,12 @@
 }
 
 .key-wide {
+<<<<<<< HEAD
+    /* width: 10%; */
+    width: 80px;
+=======
     width: 100px;
+>>>>>>> 6c64c65... feat: change behavior for Ctrl, Alt, Shift
 }
 
 .key-space-bar {
@@ -138,6 +142,5 @@
 
 .push {
     border-radius: 50%;
-    border: 1px solid rgb(7, 18, 53);
     background-color: rgba(236, 238, 244, 0.475);
 }

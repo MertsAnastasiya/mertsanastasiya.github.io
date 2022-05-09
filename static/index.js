@@ -320,9 +320,7 @@ const KEYBOARD = {
             this.properties.isShift = !this.properties.isShift
             key.classList.toggle('key-active')
             if (key.classList.value.includes('key-active')) {
-              this.shiftUpdateKeys()
-              // this.properties.isShift = !this.properties.isShift;
-              // break;
+              this.shiftUpdateKeys();
             } else {
               this.unshiftUpdateKeys()
             }
