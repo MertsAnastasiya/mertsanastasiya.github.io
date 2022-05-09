@@ -20,7 +20,8 @@
 .textarea {
     margin: 0 auto;
     display: block;
-    width: 80%;
+    width: 1000px;
+
     height: 100px;
     border: 2px solid rgb(177, 176, 176);
     border-radius: 5px;
