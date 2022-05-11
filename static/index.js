@@ -13,11 +13,11 @@ const KEYBOARD = {
     isCapsLock: false,
     isShift: false,
     pressedButton: new Set(),
-    language: 'ru-Ru'
+    language: localStorage.getItem('selectedLanguage') || 'ru-Ru'
   },
 
   init () {
-    localStorage.setItem('selectedLanguage', this.properties.language)
+    //localStorage.setItem('selectedLanguage', this.properties.language)
     const body = document.querySelector('body')
 
     const main = document.createElement('main')
@@ -329,8 +329,7 @@ const KEYBOARD = {
             this.properties.isShift = !this.properties.isShift
             key.classList.toggle('key-active')
             if (key.classList.value.includes('key-active')) {
-              this.shiftUpdateKeys()
-              // break;
+              this.shiftUpdateKeys();
             } else {
               this.unshiftUpdateKeys()
             }
