@@ -29,6 +29,10 @@ const KEYBOARD = {
     title.innerHTML = 'Virtual Keyboards'
     title.classList.add('h1')
 
+    const divLanguage = document.createElement('div')
+    divLanguage.innerHTML = 'To change language press Ctrl + Alt (Control + option)'
+    divLanguage.classList.add('divLanguage')
+
     this.elements.textResult = document.createElement('textarea')
     this.elements.textResult.classList.add('textarea')
 
@@ -38,6 +42,7 @@ const KEYBOARD = {
     this.createKey()
 
     container.appendChild(title)
+    container.appendChild(divLanguage)
     container.appendChild(this.elements.textResult)
     container.appendChild(this.elements.keyboardWrapper)
 
