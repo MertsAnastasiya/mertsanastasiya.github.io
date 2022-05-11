@@ -144,3 +144,10 @@
     border-radius: 50%;
     background-color: rgba(236, 238, 244, 0.475);
 }
+
+.divLanguage {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: rgb(7, 18, 53);
+    padding: 10px;
+}

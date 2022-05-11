@@ -13,11 +13,11 @@ const KEYBOARD = {
     isCapsLock: false,
     isShift: false,
     pressedButton: new Set(),
-    language: 'ru-Ru'
+    language: localStorage.getItem('selectedLanguage') || 'ru-Ru'
   },
 
   init () {
-    localStorage.setItem('selectedLanguage', this.properties.language)
+    //localStorage.setItem('selectedLanguage', this.properties.language)
     const body = document.querySelector('body')
 
     const main = document.createElement('main')
@@ -29,6 +29,10 @@ const KEYBOARD = {
     title.innerHTML = 'Virtual Keyboards'
     title.classList.add('h1')
 
+    const divLanguage = document.createElement('div')
+    divLanguage.innerHTML = 'To change language press Ctrl + Alt (Control + option)'
+    divLanguage.classList.add('divLanguage')
+
     this.elements.textResult = document.createElement('textarea')
     this.elements.textResult.classList.add('textarea')
 
@@ -38,6 +42,7 @@ const KEYBOARD = {
     this.createKey()
 
     container.appendChild(title)
+    container.appendChild(divLanguage)
     container.appendChild(this.elements.textResult)
     container.appendChild(this.elements.keyboardWrapper)
 
@@ -329,8 +334,7 @@ const KEYBOARD = {
             this.properties.isShift = !this.properties.isShift
             key.classList.toggle('key-active')
             if (key.classList.value.includes('key-active')) {
-              this.shiftUpdateKeys()
-              // break;
+              this.shiftUpdateKeys();
             } else {
               this.unshiftUpdateKeys()
             }
